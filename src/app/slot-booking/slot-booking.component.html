@@ -1,0 +1,109 @@
+<div class="container-fluid">
+    <div class="container m-5">
+        <div class="slot-form border border-1 border-secondary rounded-2">
+            <div class="header p-2 text-white bg-primary border-bottom rounded-2">
+                <p id="header" class="h3 text-center">{{formHeader}}</p>
+            </div>
+            <div class="form-body p-3 bg-white rounded-2 m-0">
+                <form #bookSlotForm="ngForm" (ngSubmit)="onSubmit(bookSlotForm)">
+                    <div class="controls">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="firstName">First Name <span class="text-danger">*</span></label>
+                                    <input id="firstName" type="text" name="firstName" class="form-control"
+                                        placeholder="Firstname" required="required" #firstName="ngModel"
+                                        [(ngModel)]="this.service.profile.firstName">
+                                    <p class="text-danger" *ngIf="firstName.invalid && firstName.touched ">please enter
+                                        the first name</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="lastName">Last Name<span class="text-danger">*</span></label>
+                                    <input id="lastName" type="text" name="lastName" class="form-control"
+                                        placeholder="Lastname" required #lastName="ngModel"
+                                        [(ngModel)]="this.service.profile.lastName">
+                                    <p class="text-danger" *ngIf="lastName.invalid && lastName.touched ">please enter
+                                        the last name</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="email">Email <span class="text-danger">*</span></label>
+                                    <input id="email" type="email" name="email" class="form-control" placeholder="email"
+                                        email required #email="ngModel" [(ngModel)]="this.service.profile.email">
+                                    <p class="text-danger" *ngIf="email.invalid && email.touched">please enter correct
+                                        email</p>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-2">
+                                    <label for="phone">Phone<span class="text-danger">*</span></label>
+                                    <input id="phone" type="tel" name="phone" class="form-control" placeholder="phone"
+                                        required #phone="ngModel" [(ngModel)]="this.service.profile.phone">
+                                    <p class="text-danger" *ngIf="phone.invalid && phone.touched ">please enter the
+                                        phone number</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group mb-2">
+                                    <label for="profileDesc">Message <span class="text-danger">*</span></label>
+                                    <textarea id="profileDesc" name="profileDesc" class="form-control"
+                                        placeholder="profile Description" rows="4" #profileDesc="ngModel"
+                                        [(ngModel)]="this.service.profile.profileDesc" required="required"></textarea>
+                                    <p class="text-danger" *ngIf="profileDesc.invalid && profileDesc.touched ">please
+                                        enter the Description</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mt-2">
+                                <button type="submit" class="btn btn-primary btn-send" [disabled]="bookSlotForm.invalid">{{btnName}}</button>
+                                <p  [ngStyle]="{color:status=='add'?'green':'red'}" >{{this.service.statusMsg}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-hover border border-1 rounded-1 mb-5">
+        <thead>
+            <tr>
+                <th>slot Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Profile Description</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let profile of this.service.profiles ; index as id">
+            <tr>
+                <td>{{this.profile.id}}</td>
+                <td>{{this.profile.firstName}}</td>
+                <td>{{this.profile.lastName}}</td>
+                <td>{{this.profile.email}}</td>
+                <td>{{this.profile.phone}}</td>
+                <td>{{this.profile.profileDesc}}</td>
+                <td>
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" class="updateProfileBtn"
+                        (click)="updateProfile(this.profile.id)">edit_note</mat-icon>
+                </td>
+                <td>
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" class="deleteProfileBtn text-danger"
+                        (click)="deleteProfile(this.profile.id)">delete_forever</mat-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

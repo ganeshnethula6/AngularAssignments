@@ -1,0 +1,30 @@
+<div class="container">
+    <form #form="ngForm" (ngSubmit)="submitForm(form)">
+        <div class="row m-3">
+            <div class="col m-3">
+                <label for="firstName">First Name</label>
+                <input type="text" ngModel  name="firstName" id="firstName" placeholder="Enter First Name" class="form-control m-2 p-3 text-secondary">
+            </div>
+            <div class="col m-3">
+                <label for="lastName">Last Name</label>
+                <input type="text" ngModel  name="lastName" id="lastName" placeholder="Enter Last Name" class="form-control m-2 p-3 text-secondary">
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col m-3">
+                <label for="email">Email</label>
+                <input type="email" ngModel name="email" id="email" placeholder="Enter Email" class="form-control m-2 p-3 text-secondary">
+            </div>
+            <div class="col m-3">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="tel" ngModel name="phoneNumber" id="phoneNumber" placeholder="Enter Phone Number" class="form-control m-2 p-3 text-secondary">
+            </div>
+        </div>
+        <div class="col m-3">
+            <button class="btn btn-primary" type="submit">submit</button>
+        </div>
+    </form>
+    <div class="col">
+        <button class="btn btn-danger m-3" type="button" (click)="getUsers()">fetchUsers</button>
+    </div>
+</div>

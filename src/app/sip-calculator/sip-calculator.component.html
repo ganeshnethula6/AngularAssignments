@@ -1,0 +1,89 @@
+<div class="container-fluid mt-3">
+    <div class="col-md-12">
+        <h1 class="sipCalcHeading">SIP Calculator - Calculate SIP Returns &amp; Invest in SIP</h1>
+
+
+        <div class="row">
+            <div class="col-md-12 col-xs-12 calcSection">
+                <div class="loanCalc">
+                    <div class="col sipClcForm">
+                        <div class="inpt-slider">
+                            <div class="radioBtn">
+                                <input name="radioGroup" id="sipInvest" type="radio" checked="checked"> 
+                                <label class="flRight" for="sipInvest">I Want to Invest</label> 
+                                <input name="radioGroup" id="sipGoal" type="radio"> 
+                                <label for="sipGoal">I Know My Goal</label>
+                            </div>
+
+                        </div>
+                        <div class="ionSlider newCalc">
+                            <div class="inpt-slider canInvest">
+                                <div class="inpt-statement loan_amount">
+                                    <label class="canInvest" for="loan_amountInv">I wish to invest per month</label>
+                                    <input name="mnthsavings" class="inpt inputBox numbersOnly loanAmt"
+                                        (change)="calculateIntrest()" [(ngModel)]="loanAmt" id="loan_amountInv"
+                                        type="text" maxlength="6" data-minval="5000" data-maxval="500000"
+                                        onpaste="return false">
+                                    <div class="slider row">
+                                        <input type="range" name="loanAmtSlider" id="loanAmtSlider"
+                                            (change)="calculateIntrest()" [(ngModel)]="loanAmt" min="500" max="500000"
+                                            class="mt-4">
+                                        <div class="slider-labels d-flex justify-content-between p-0  m-0">
+                                            <span>500</span><span>5L</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="inpt-slider">
+                                <div class="inpt-statement tenure"><label for="tenure">No. of years</label>
+                                    <input name="mnthsavings" class="inputBox inpt numbersOnly"
+                                        (change)="calculateIntrest()" id="tenure" [(ngModel)]="tenure" type="text"
+                                        maxlength="3" data-minval="20" data-maxval="30" onpaste="return false">
+                                        <div class="slider row">
+                                            <input type="range"  name="loanAmtSlider" id="loanAmtSlider"
+                                                (change)="calculateIntrest()" [(ngModel)]="tenure" min="1" max="30"
+                                                class="mt-4">
+                                            <div class="slider-labels d-flex justify-content-between p-0  m-0">
+                                                <span>1Year</span><span>30Year</span></div>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="inpt-slider">
+                                <div class="inpt-statement interest_rate">
+                                    <label for="interest_rate">Expected Rate of Return </label>
+                                    <input name="mnthsavings" class="inputBox inpt numbersDecimal"
+                                        (change)="calculateIntrest()" id="interest_rate" [(ngModel)]="interestRate"
+                                        type="text" maxlength="4" data-minval="8" data-maxval="15"
+                                        onpaste="return false">
+                                        <div class="slider row">
+                                            <input type="range" name="loanAmtSlider" id="loanAmtSlider"
+                                                (change)="calculateIntrest()" [(ngModel)]="interestRate" min="8" max="15"
+                                                class="mt-4">
+                                            <div class="slider-labels d-flex justify-content-between p-0  m-0">
+                                                <span>8%</span><span>15%</span></div>
+                                        </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col totalBox">
+                        <div class="finalResult">
+                            <div class="resRow monAmt" style="display: none;"><span>Monthly SIP Amount</span> <strong
+                                    class="rupeeIconSip">₹</strong> <span id="lblEMIAmt">505</span></div>
+                            <div class="resRow sipInv">
+                                    <p class="h2">Invested Amount</p>
+                                    <p class=" result h2 text-primary m-1 p-1"><span class="rupeeSymbol mx-1">₹</span>{{this.investedAmount}}</p>
+                            </div>
+                            <div class="resRow sipInv">
+                                <p class="h2">Resultant Amount</p>
+                                <p class=" result h2 text-primary m-1 p-1"><span class="rupeeSymbol mx-1">₹</span>{{this.returnAmount}}</p>
+                            </div>
+                            <a class="btn btn-default panel-orange-btn sipStartASip"
+                                href="https://accounts.franklintempletonindia.com/ngGuest/#/transactnowlogin"
+                                target="_blank" rel="nofollow">Start a SIP</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
